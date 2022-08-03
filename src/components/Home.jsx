@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 
 export default function Home(){
+  const MY_API = "https://fake-crud-server.herokuapp.com/users"
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-
     
     useEffect(()=>{
       getAllUsersAwait();
@@ -17,14 +17,14 @@ export default function Home(){
     
 
     const getAllUsersAwait = async()=>{
-      const result = await axios.get("http://localhost:5000/users");
+      const result = await axios.get(MY_API);
       setUsers(result.data.reverse())
        setLoading(false)
     }  
     
 
     const deleteUser = async (userId)=>{
-      await axios.delete(`http://localhost:5000/users/${userId}`);
+      await axios.delete(`${MY_API}/${userId}`);
       getAllUsersAwait();
     }
     

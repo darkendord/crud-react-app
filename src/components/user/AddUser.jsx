@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useNavigate} from "react-router-dom"
 
 function AddUser() {
-
+const MY_API = "https://fake-crud-server.herokuapp.com/users"
     const initialstate = {
         name: "", 
         username: "", 
@@ -45,7 +45,7 @@ function AddUser() {
         }
 
         if(user.name && user.username && user.email && user.phone && user.website){
-        await axios.post("http://localhost:5000/users", user);
+        await axios.post(MY_API, user);
         navigate({pathname: "/"})}
     }
 

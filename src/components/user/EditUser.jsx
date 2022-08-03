@@ -28,12 +28,14 @@ function EditUser() {
         setUser({ ...user, [event.target.name]: event.target.value });
     }
 
+    const MY_API = "https://fake-crud-server.herokuapp.com/users"
+
     useEffect(()=>{
         fetchUser()
     },[])
 
     const fetchUser = async ()=>{
-        const response = await axios.get(`http://localhost:5000/users/${userId}`);
+        const response = await axios.get(`${MY_API}/${userId}`);
         // console.log(response)
         setUser(response.data)
     }
@@ -57,7 +59,7 @@ function EditUser() {
             alert("website can not be ")
         }
 
-        await axios.put(`http://localhost:5000/users/${userId}`, user);
+        await axios.put(`${MY_API}/${userId}`, user);
         navigate({pathname: "/"})
     }
 

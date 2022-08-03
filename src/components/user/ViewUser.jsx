@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 const ViewUser = () => {
-
+const MY_API = "https://fake-crud-server.herokuapp.com/users"
     const {userId} = useParams();// Will take the userID value from the url an return it
 
     const [address, setAddress] = useState({})
@@ -27,7 +27,7 @@ const initialstate = {
     },[])
 
     const fetchUser = async ()=>{
-        const response = await axios.get(`http://localhost:5000/users/${userId}`);
+        const response = await axios.get(`${MY_API}/${userId}`);
         setUser(response.data)    
         setAddress(response.data.address)    
         setCompany(response.data.company)    
